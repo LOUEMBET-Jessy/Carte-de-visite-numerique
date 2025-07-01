@@ -1,806 +1,219 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <title>Carte de Visite - Kevin Arsene Confort</title>
+    <title>CNX 4.0 - Cartes de visite de l'équipe</title>
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
-* {
-    box-sizing: border-box;
-}
-
-body {
-    height: auto;
-    margin: 0;
-    padding: 20px 0;
-    background-color: #ffffff;
-    font-family: sans-serif;
-}
-
-/* Header */
-.header {
-    background-color: #4CAF50;
-    width: 100%;
-    height: 80px;
-    position: fixed;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    z-index: 1000;
-}
-
-.header-button {
-    background: transparent;
-    border: 2px solid white;
-    border-radius: 25px;
-    padding: 10px 20px;
-    color: white;
-    cursor: pointer;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-    max-width: 90vw;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.header-button:hover {
-    background: white;
-    color: #4CAF50;
-}
-
-.header-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
-}
-
-.header-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-.button-icon {
-    width: 16px;
-    height: 16px;
-    fill: currentColor;
-}
-
-/* Container principal */
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    max-width: 60%;
-    min-height: 500px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-    transform: translateY(75px);
-    transition: transform 0.3s ease-in-out;
-    border-radius: 8px;
-    padding: 30px 20px;
-}
-
-.card {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Logo */
-.logo-section {
-    margin-bottom: 20px;
-}
-
-.logo-section img {
-    max-width: 120px;
-    height: auto;
-}
-
-/* Séparateur */
-.hr {
-    width: 80%;
-    margin: 15px auto;
-    height: 2px;
-    background-color: #4CAF50;
-    border: none;
-}
-
-/* Titres */
-h2 {
-    font-size: 32px;
-    margin: 15px 0;
-    color: #333;
-}
-
-h4 {
-    font-size: 20px;
-    margin: 10px 0;
-    color: #666;
-}
-
-/* Section contact */
-.contact-section {
-    display: inline-block;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-
-.contact-item {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin: 10px 0;
-    padding: 4px 0;
-}
-
-.contact-icon {
-    width: 18px;
-    height: 18px;
-    fill: #4CAF50;
-    flex-shrink: 0;
-}
-
-.contact-text {
-    font-size: 14px;
-    color: #333;
-}
-
-.contact-text a {
-    text-decoration: none;
-    color: #333;
-    transition: color 0.3s ease;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    font-size: 14px;
-}
-
-.contact-text a:hover {
-    color: #4CAF50;
-    cursor: pointer;
-}
-
-.phone-numbers {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-}
-
-/* QR Code */
-.qr-code {
-    width: 100%;
-    text-align: center;
-    margin-top: 50px;
-}
-
-.qr-code img {
-    width: 25vw; /* 25% de la largeur de l'écran */
-    max-width: 120px;
-    height: auto;
-    border-radius: 8px;
-    padding: 6px;
-}
-
-
-/* Footer */
-.footer {
-    background-color: #4CAF50;
-    width: 100%;
-    height: 60px;
-    position: fixed;
-    bottom: 0;
-    padding: 10px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.footer p {
-    opacity: 0.8;
-    color: white;
-    margin: 0;
-    font-size: 14px;
-}
-
-/* Loading overlay simplifié */
-.loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(76, 175, 80, 0.95);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-    backdrop-filter: blur(5px);
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-.loading-content {
-    background: white;
-    padding: 40px 50px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    max-width: 320px;
-    width: 90%;
-}
-
-/* Spinner principal */
-.loading-spinner {
-    width: 50px;
-    height: 50px;
-    border: 4px solid #e8f5e8;
-    border-top: 4px solid #4CAF50;
-    border-right: 4px solid #66BB6A;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 20px;
-    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
-}
-
-/* Texte de chargement */
-.loading-text {
-    font-size: 16px;
-    color: #333;
-    margin: 0;
-    font-weight: 600;
-}
-
-/* Points de chargement animés */
-.loading-dots {
-    display: flex;
-    justify-content: center;
-    gap: 4px;
-    margin-top: 15px;
-}
-
-.loading-dot {
-    width: 8px;
-    height: 8px;
-    background: #4CAF50;
-    border-radius: 50%;
-    animation: bounce 1.4s ease-in-out infinite both;
-}
-
-.loading-dot:nth-child(1) { animation-delay: -0.32s; }
-.loading-dot:nth-child(2) { animation-delay: -0.16s; }
-.loading-dot:nth-child(3) { animation-delay: 0s; }
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes bounce {
-    0%, 80%, 100% { 
-        transform: scale(0.8);
-        opacity: 0.5;
-    }
-    40% { 
-        transform: scale(1.2);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeOut {
-    from { opacity: 1; transform: scale(1); }
-    to { opacity: 0; transform: scale(0.9); }
-}
-
-/* Responsive Mobile */
-@media (max-width: 768px) {
-    body {
-        padding: 30px 0;
-    }
-    
-    .header {
-        height: 70px;
-        padding: 0 15px;
-    }
-    
-    .header-button {
-        padding: 8px 15px;
-        font-size: 12px;
-    }
-    
-    .container {
-        max-width: 85%;
-        margin: 40px auto;
-        transform: translateY(30px);
-        padding: 20px 15px;
-    }
-
-    .contact-section {
-        text-align: center;
-        display: inline-block;
-        align-items: center;
-    }
-    
-    .hr {
-        width: 60%;
-    }
-
-    h2 {
-        font-size: 24px;
-    }
-    
-    h4 {
-        font-size: 16px;
-    }
-    
-    .contact-item {
-        gap: 10px;
-        margin: 8px 0;
-    }
-    
-    .contact-icon {
-        width: 16px;
-        height: 16px;
-    }
-    
-    .contact-text {
-        font-size: 13px;
-    }
-
-    .qr-code img {
-        width: 85px;
-        height: 85px;
-    }
-
-    .footer {
-        height: 50px;
-    }
-    
-    .footer p {
-        font-size: 12px;
-    }
-}
-
-/* Responsive Desktop */
-@media (min-width: 769px) {
-    body {
-        padding: 0;
-    }
-    
-    .container {
-        margin: 60px auto;
-        transform: translateY(35px);
-        max-height: 550px;
-    }
-
-    .contact-section {
-        max-width: 630px;
-    }
-
-    .contact-text a {
-    font-size: 18px;
-    font-family: sans-serif;
-    }
-    
-    .hr {
-        width: 70%;
-    }
-
-    h2 {
-        font-size: 28px;
-    }
-    
-    h4 {
-        font-size: 18px;
-    }
-}
-
-
-/* MODE PDF - SANS HEADER/FOOTER */
-.pdf-mode body {
-    margin: 0 !important;
-    padding: 0 !important;
-    background: white !important;
-    font-family: Arial, sans-serif !important;
-}
-
-.pdf-mode .header {
-    display: none !important;
-}
-
-.pdf-mode .footer {
-    display: none !important;
-}
-
-.pdf-mode .loading-overlay {
-    display: none !important;
-}
-
-.pdf-mode .container {
-    transform: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    margin: 0 auto !important;
-    max-width: 180mm !important;
-    width: 180mm !important;
-    padding: 25mm 20mm !important;
-    min-height: 240mm !important;
-    height: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    page-break-inside: avoid;
-}
-
-/* TAILLES OPTIMISÉES POUR PDF A4 */
-.pdf-mode .logo-section {
-    margin-bottom: 20mm !important;
-}
-
-.pdf-mode .logo-section img {
-    max-width: 50mm !important;
-    height: auto !important;
-}
-
-.pdf-mode h2 {
-    font-size: 24pt !important;
-    margin: 8mm 0 !important;
-    font-weight: bold !important;
-    color: #333 !important;
-    text-align: center !important;
-}
-
-.pdf-mode h4 {
-    font-size: 16pt !important;
-    margin: 6mm 0 !important;
-    font-weight: 500 !important;
-    color: #666 !important;
-    text-align: center !important;
-}
-
-.pdf-mode .contact-section {
-    padding: 10mm 0 !important;
-    width: 100% !important;
-}
-
-.pdf-mode .contact-item {
-    margin: 5mm 0 !important;
-    gap: 4mm !important;
-    justify-content: center !important;
-}
-
-.pdf-mode .contact-icon {
-    width: 5mm !important;
-    height: 5mm !important;
-}
-
-.pdf-mode .contact-text,
-.pdf-mode .contact-text a {
-    font-size: 14pt !important;
-    color: #333 !important;
-    font-weight: normal !important;
-}
-
-.pdf-mode .hr {
-    margin: 10mm auto !important;
-    height: 1.5mm !important;
-    width: 70% !important;
-}
-
-.pdf-mode .qr-code {
-    margin-top: 20mm !important;
-}
-
-.pdf-mode .qr-code img {
-    width: 35mm !important;
-    height: 35mm !important;
-    max-width: none !important;
-}
-
-
-@supports (-webkit-touch-callout: none) {
-    /* iOS specific fixes */
-    body {
-        -webkit-text-size-adjust: 100%;
-    }
-    
-    .container {
-        transform: none !important;
-        margin-top: 100px !important;
-    }
-}
-
-</style>
-
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .member-name:hover {
+            color: #667eea;
+        }
+
+        .member-role {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .member-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #ecf0f1;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
 </head>
-<body class="body">
-    <!-- Loading overlay simplifié -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <p class="loading-text" id="loadingText">Veuillez patienter...</p>
-            <div class="loading-dots">
-                <div class="loading-dot"></div>
-                <div class="loading-dot"></div>
-                <div class="loading-dot"></div>
+<body>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Membres</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Départements</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Disponibles</div>
             </div>
         </div>
-    </div>
 
-    <header class="header">
-        <button class="header-button" onclick="downloadPDF()" id="pdfBtn">
-            <svg class="button-icon" viewBox="0 0 24 24">
-                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-            </svg>
-            Télécharger PDF
-        </button>
-        
-        <button class="header-button" onclick="saveContact()" id="contactBtn">
-            <svg class="button-icon" viewBox="0 0 24 24">
-                <path d="M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7A2,2 0 0,1 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.89 12.76,23 12.5,23H12M13,17V20.08L16.08,17H21V7H7V17H13M9,9H19V11H9V9M9,13H17V15H9V13Z"/>
-            </svg>
-            Enregistrer Contact
-        </button>
-    </header>
-    
-    <div class="container">
-        <div class="card">
-            <div class="logo-section">
-                <img src="https://cnxlink.cnx4-0.com/_next/image?url=%2Fimages%2Fnew_logo-bgHiden.png&w=256&q=75" alt="Logo CNX 4.0">
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-avatar">EH</div>
+                <a href="profils/edi_hosana.html" class="member-name">Edi Hosana SOKENOU</a>
+                <div class="member-role">Développeur Full Stack</div>
             </div>
-            
-            <h2>Kevin Arsene Confort</h2>
-            <h4>Consultant - Développeur</h4>
-            
-            <hr class="hr">
-            
-            <div class="contact-section">
-                <div class="contact-item">
-                    <svg class="contact-icon" viewBox="0 0 24 24">
-                        <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
-                    </svg>
-                    <div class="contact-text">
-                        <div class="phone-numbers">
-                            <a href="tel:+241066866698">+241 066 86 66 98</a>
-                            <a href="tel:+241077179499">+241 077 17 94 99</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <svg class="contact-icon" viewBox="0 0 24 24">
-                        <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
-                    </svg>
-                    <div class="contact-text">
-                        <a href="mailto:kevin@cnx4-0.com">kevin@cnx4-0.com</a>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <svg class="contact-icon" viewBox="0 0 24 24">
-                        <path d="M16.36,14C16.44,13.3 16.5,12.66 16.5,12S16.44,10.7 16.36,10H19.74C19.9,10.64 20,11.31 20,12S19.9,13.36 19.74,14M14.59,19.56C15.19,18.45 15.65,17.25 15.97,16H18.92C17.96,17.65 16.43,18.93 14.59,19.56M14.34,14H9.66C9.56,13.34 9.5,12.68 9.5,12S9.56,10.66 9.66,10H14.34C14.43,10.66 14.5,13.34 14.5,12S14.43,13.34 14.34,14M12,19.96C11.17,18.76 10.5,17.43 10.09,16H13.91C13.5,17.43 12.83,18.76 12,19.96M8,8H5.08C6.03,6.34 7.57,5.06 9.4,4.44C8.8,5.55 8.35,6.75 8,8M5.08,16H8C8.35,17.25 8.8,18.45 9.4,19.56C7.57,18.93 6.03,17.65 5.08,16M4.26,14C4.1,13.36 4,12.69 4,12S4.1,10.64 4.26,10H7.64C7.56,10.7 7.5,11.34 7.5,12S7.56,13.3 7.64,14M12,4.03C12.83,5.23 13.5,6.57 13.91,8H10.09C10.5,6.57 11.17,5.23 12,4.03M18.92,8H15.97C15.65,6.75 15.19,5.55 14.59,4.44C16.43,5.07 17.96,6.34 18.92,8M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
-                    </svg>
-                    <div class="contact-text">
-                        <a href="https://cnx4-0.com" target="_blank">cnx4-0.com</a>
-                    </div>
-                </div>
+
+            <div class="team-member">
+                <div class="member-avatar">JM</div>
+                <a href="profils/jessica.html" class="member-name">Jessica MENGUE LENDEME</a>
+                <div class="member-role">Designer UI/UX</div>
             </div>
-            
-            <div class="qr-code">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png" alt="QR Code pour contact">
+
+            <div class="team-member">
+                <div class="member-avatar">JL</div>
+                <a href="profils/jessy_mac.html" class="member-name">Jessy Mac LOUEMBET</a>
+                <div class="member-role">Chef de projet</div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-avatar">MD</div>
+                <a href="profils/marly_djeffy.html" class="member-name">Marly Djefy MOUTSINGA</a>
+                <div class="member-role">Développeur Backend</div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-avatar">SK</div>
+                <a href="profils/sevan_kedesh.html" class="member-name">Sevan Kedesh IKISSA PENDY</a>
+                <div class="member-role">Développeur Frontend</div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-avatar">MA</div>
+                <a href="profils/melchise_anwar.html" class="member-name">Melchise Dek Khalil Anwar NGOUA</a>
+                <div class="member-role">Architecte logiciel</div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-avatar">PF</div>
+                <a href="profils/pascale_fleur.html" class="member-name">Pascale-Fleur MBENGA IBITI</a>
+                <div class="member-role">Analyste fonctionnel</div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-avatar">SL</div>
+                <a href="profils/sabrina.html" class="member-name">Sabrina LEBOMO</a>
+                <div class="member-role">Testeuse QA</div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-avatar">KE</div>
+                <a href="profils/kevin.html" class="member-name">Kevin Arsene Confort EYA'A</a>
+                <div class="member-role">Lead développeur</div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-avatar">FL</div>
+                <a href="profils/florentin.html" class="member-name">Florentin LEBOMO</a>
+                <div class="member-role">DevOps Engineer</div>
             </div>
         </div>
-    </div>
-    
-    <footer class="footer">
-        <p>&copy; 2023 CNX 4.0. Tous droits réservés.</p>
-    </footer>
-
-    <!-- Chargement des librairies externes -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
-    <script>
-        // Affichage du loading simplifié
-        function showLoading(message) {
-            const overlay = document.getElementById('loadingOverlay');
-            const loadingText = document.getElementById('loadingText');
-            
-            if (loadingText) {
-                loadingText.textContent = message;
-            }
-            overlay.style.display = 'flex';
-        }
-
-        function hideLoading() {
-            const overlay = document.getElementById('loadingOverlay');
-            overlay.style.animation = 'fadeOut 0.3s ease-in-out';
-            setTimeout(() => {
-                overlay.style.display = 'none';
-                overlay.style.animation = 'fadeIn 0.3s ease-in-out';
-            }, 300);
-        }
-
-        function disableButtons() {
-            const pdfBtn = document.getElementById('pdfBtn');
-            const contactBtn = document.getElementById('contactBtn');
-            pdfBtn.disabled = true;
-            contactBtn.disabled = true;
-            pdfBtn.style.opacity = '0.6';
-            contactBtn.style.opacity = '0.6';
-        }
-
-        function enableButtons() {
-            const pdfBtn = document.getElementById('pdfBtn');
-            const contactBtn = document.getElementById('contactBtn');
-            pdfBtn.disabled = false;
-            contactBtn.disabled = false;
-            pdfBtn.style.opacity = '1';
-            contactBtn.style.opacity = '1';
-        }
-
-        // Fonction PDF avec loader simplifié
-        async function downloadPDF() {
-            try {
-                showLoading('Génération du PDF en cours...');
-                disableButtons();
-                
-                // Mode PDF activé
-                document.body.classList.add('pdf-mode');
-                
-                // Petit délai pour permettre l'application du mode PDF
-                await new Promise(resolve => setTimeout(resolve, 200));
-                
-                // Configuration html2canvas optimisée
-                const canvas = await html2canvas(document.body, {
-                    scale: 2,
-                    useCORS: true,
-                    allowTaint: true,
-                    backgroundColor: '#ffffff',
-                    width: 794,
-                    height: 1123,
-                    scrollX: 0,
-                    scrollY: 0,
-                    windowWidth: 794,
-                    windowHeight: 1123,
-                    removeContainer: true,
-                    imageTimeout: 5000,
-                    logging: false,
-                    ignoreElements: function(element) {
-                        return element.classList.contains('loading-overlay') ||
-                               element.classList.contains('header') ||
-                               element.classList.contains('footer');
-                    }
-                });
-                
-                const { jsPDF } = window.jspdf;
-                const pdf = new jsPDF({
-                    orientation: 'portrait',
-                    unit: 'mm',
-                    format: 'a4',
-                    compress: true,
-                    precision: 2
-                });
-                
-                // Dimensions et calculs
-                const pageWidth = 210;
-                const pageHeight = 297;
-                const imgWidth = pageWidth;
-                const imgHeight = (canvas.height * pageWidth) / canvas.width;
-                
-                let offsetY = 0;
-                if (imgHeight < pageHeight) {
-                    offsetY = (pageHeight - imgHeight) / 2;
-                }
-                
-                // Ajout de l'image
-                pdf.addImage(
-                    canvas.toDataURL('image/jpeg', 0.85),
-                    'JPEG', 
-                    0, 
-                    offsetY, 
-                    imgWidth, 
-                    Math.min(imgHeight, pageHeight),
-                    undefined,
-                    'FAST'
-                );
-                
-                // Téléchargement
-                pdf.save('Carte_Visite_Kevin_Arsene_Confort.pdf');
-                
-            } catch (error) {
-                console.error('Erreur PDF:', error);
-                alert('Erreur lors de la génération du PDF. Veuillez réessayer.');
-            } finally {
-                // Nettoyage
-                document.body.classList.remove('pdf-mode');
-                hideLoading();
-                enableButtons();
-            }
-        }
-
-        // Fonction de sauvegarde contact avec loader
-        function saveContact() {
-            try {
-                showLoading('Création du contact...');
-                disableButtons();
-                
-                const contact = {
-                    name: "Kevin Arsene Confort",
-                    title: "Consultant - Développeur",
-                    company: "CNX 4.0",
-                    phone1: "+241 066 86 66 98",
-                    phone2: "+241 077 17 94 99",
-                    email: "kevin@cnx4-0.com",
-                    website: "https://cnx4-0.com"
-                };
-                
-                const vcard = `BEGIN:VCARD
-VERSION:3.0
-FN:${contact.name}
-ORG:${contact.company}
-TITLE:${contact.title}
-TEL;TYPE=WORK,VOICE:${contact.phone1}
-TEL;TYPE=WORK,VOICE:${contact.phone2}
-EMAIL;TYPE=WORK:${contact.email}
-URL:${contact.website}
-END:VCARD`;
-                
-                const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'Kevin_Arsene_Confort.vcf';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                window.URL.revokeObjectURL(url);
-                
-                setTimeout(() => {
-                    hideLoading();
-                    enableButtons();
-                }, 800);
-                
-            } catch (error) {
-                console.error('Erreur contact:', error);
-                alert('Erreur lors de la création du contact. Veuillez réessayer.');
-                hideLoading();
-                enableButtons();
-            }
-        }
-
-        // Préchargement des images
-        window.addEventListener('load', function() {
-            const images = document.querySelectorAll('img');
-            images.forEach(img => {
-                if (!img.complete) {
-                    img.addEventListener('load', function() {
-                        // Image chargée
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html>

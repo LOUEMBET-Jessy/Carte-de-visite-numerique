@@ -1,0 +1,481 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: auto;
+  margin: 0;
+  padding: 20px 0;
+  background-color: #ffffff;
+  font-family: sans-serif;
+}
+
+.header {
+  background-color: #4CAF50;
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+.header-button {
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 25px;
+  padding: 10px 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  max-width: 90vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.header-button:hover {
+  background: white;
+  color: #4CAF50;
+}
+
+.header-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.header-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  max-width: 60%;
+  min-height: 500px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(75px);
+  transition: transform 0.3s ease-in-out;
+  border-radius: 8px;
+  padding: 30px 20px;
+}
+
+.card {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo-section {
+  margin-bottom: 20px;
+}
+
+.logo-section img {
+  max-width: 220px;
+  height: auto;
+}
+
+.hr {
+  width: 80%;
+  margin: 15px auto;
+  height: 2px;
+  background-color: #4CAF50;
+  border: none;
+}
+
+h2 {
+  font-size: 32px;
+  margin: 15px 0;
+  color: #333;
+}
+
+h4 {
+  font-size: 20px;
+  margin: 10px 0;
+  color: #666;
+}
+
+.contact-section {
+  display: inline-block;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  text-align: left;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.contact-item {
+  display: flex;
+  justify-content: left;
+  gap: 12px;
+  margin: 10px 0;
+  padding: 4px 0;
+  font-size: 14px;
+}
+
+.contact-icon {
+  width: 18px;
+  height: 18px;
+  fill: #4CAF50;
+  flex-shrink: 0;
+}
+
+.contact-text {
+  font-size: 14px;
+  color: #333;
+}
+
+.contact-text a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  font-size: 18px;
+}
+
+.contact-text a:hover {
+  color: #4CAF50;
+  cursor: pointer;
+}
+
+.phone-numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.qr-code {
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.qr-code img {
+  width: 25vw;
+  max-width: 120px;
+  height: auto;
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.footer {
+  background-color: #4CAF50;
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer p {
+  opacity: 0.8;
+  color: white;
+  margin: 0;
+  font-size: 14px;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(76, 175, 80, 0.95);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.loading-content {
+  background: white;
+  padding: 40px 50px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 320px;
+  width: 90%;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e8f5e8;
+  border-top: 4px solid #4CAF50;
+  border-right: 4px solid #66BB6A;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+
+.loading-text {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+  font-weight: 600;
+}
+
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 15px;
+}
+
+.loading-dot {
+  width: 8px;
+  height: 8px;
+  background: #4CAF50;
+  border-radius: 50%;
+  animation: bounce 1.4s ease-in-out infinite both;
+}
+
+.loading-dot:nth-child(1) { animation-delay: -0.32s; }
+.loading-dot:nth-child(2) { animation-delay: -0.16s; }
+.loading-dot:nth-child(3) { animation-delay: 0s; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { 
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% { 
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.9); }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 30px 0;
+  }
+  .header {
+    height: 70px;
+    padding: 0 15px;
+  }
+  .header-button {
+    padding: 8px 15px;
+    font-size: 12px;
+  }
+  .container {
+    max-width: 85%;
+    margin: 40px auto;
+    transform: translateY(30px);
+    padding: 20px 15px;
+  }
+  .contact-section {
+    text-align: center;
+    display: inline-block;
+    align-items: center;
+  }
+  .hr {
+    width: 60%;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  h4 {
+    font-size: 16px;
+  }
+  .contact-item {
+    gap: 10px;
+    margin: 8px 0;
+  }
+  .contact-icon {
+    width: 16px;
+    height: 16px;
+  }
+  .contact-text {
+    font-size: 13px;
+  }
+  .qr-code img {
+    width: 85px;
+    height: 85px;
+  }
+  .footer {
+    height: 50px;
+  }
+  .footer p {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 769px) {
+  body {
+    padding: 0;
+  }
+  .container {
+    margin: 60px auto;
+    transform: translateY(35px);
+    max-height: 550px;
+  }
+  .contact-section {
+    max-width: 630px;
+  }
+  .contact-text a {
+    font-size: 18px;
+    font-family: sans-serif;
+  }
+  .hr {
+    width: 70%;
+  }
+  h2 {
+    font-size: 28px;
+  }
+  h4 {
+    font-size: 18px;
+  }
+}
+
+.pdf-mode body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: white !important;
+  font-family: Arial, sans-serif !important;
+}
+
+.pdf-mode .header {
+  display: none !important;
+}
+
+.pdf-mode .footer {
+  display: none !important;
+}
+
+.pdf-mode .loading-overlay {
+  display: none !important;
+}
+
+.pdf-mode .container {
+  transform: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  margin: 0 auto !important;
+  max-width: 180mm !important;
+  width: 180mm !important;
+  padding: 25mm 20mm !important;
+  min-height: 240mm !important;
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  page-break-inside: avoid;
+}
+
+.pdf-mode .logo-section {
+  margin-bottom: 20mm !important;
+}
+
+.pdf-mode .logo-section img {
+  max-width: 50mm !important;
+  height: auto !important;
+}
+
+.pdf-mode h2 {
+  font-size: 24pt !important;
+  margin: 8mm 0 !important;
+  font-weight: bold !important;
+  color: #333 !important;
+  text-align: center !important;
+}
+
+.pdf-mode h4 {
+  font-size: 16pt !important;
+  margin: 6mm 0 !important;
+  font-weight: 500 !important;
+  color: #666 !important;
+  text-align: center !important;
+}
+
+.pdf-mode .contact-section {
+  padding: 10mm 0 !important;
+  width: 100% !important;
+}
+
+.pdf-mode .contact-item {
+  margin: 5mm 0 !important;
+  gap: 4mm !important;
+  justify-content: center !important;
+}
+
+.pdf-mode .contact-icon {
+  width: 5mm !important;
+  height: 5mm !important;
+}
+
+.pdf-mode .contact-text,
+.pdf-mode .contact-text a {
+  font-size: 14pt !important;
+  color: #333 !important;
+  font-weight: normal !important;
+}
+
+.pdf-mode .hr {
+  margin: 10mm auto !important;
+  height: 1.5mm !important;
+  width: 70% !important;
+}
+
+.pdf-mode .qr-code {
+  margin-top: 20mm !important;
+}
+
+.pdf-mode .qr-code img {
+  width: 35mm !important;
+  height: 35mm !important;
+  max-width: none !important;
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
+  .container {
+    transform: none !important;
+    margin-top: 100px !important;
+  }
+}
