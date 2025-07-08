@@ -90,7 +90,7 @@ body {
 }
 
 .logo-section img {
-  max-width: 220px;
+  width: auto;
   height: auto;
 }
 
@@ -120,8 +120,11 @@ h4 {
   align-items: left;
   justify-content: left;
   text-align: left;
-  padding: 10px;
+  /* padding: 10px; */
+  margin-left: 18px;
   box-sizing: border-box;
+  /* background-color: #4CAF50; */
+  /* padding-right: 50px; */
 }
 
 .contact-item {
@@ -130,7 +133,7 @@ h4 {
   gap: 12px;
   margin: 10px 0;
   padding: 4px 0;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .contact-icon {
@@ -141,7 +144,7 @@ h4 {
 }
 
 .contact-text {
-  font-size: 14px;
+  font-size: 18px;
   color: #333;
 }
 
@@ -168,7 +171,7 @@ h4 {
 .qr-code {
   width: 100%;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 .qr-code img {
@@ -176,7 +179,7 @@ h4 {
   max-width: 120px;
   height: auto;
   border-radius: 8px;
-  padding: 6px;
+  padding: 5px;
 }
 
 .footer {
@@ -397,7 +400,7 @@ h4 {
   margin: 0 auto !important;
   max-width: 180mm !important;
   width: 180mm !important;
-  padding: 25mm 20mm !important;
+  padding: 10mm 0 !important;
   min-height: 240mm !important;
   height: auto !important;
   display: flex !important;
@@ -412,63 +415,78 @@ h4 {
 }
 
 .pdf-mode .logo-section img {
-  max-width: 50mm !important;
+  width: auto !important;
   height: auto !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+.pdf-mode .container {
+  font-size: 18pt !important;
+  max-width: 180mm !important;
+  width: 180mm !important;
+  padding: 60mm 0 10mm 0 !important;
 }
 
 .pdf-mode h2 {
-  font-size: 24pt !important;
-  margin: 8mm 0 !important;
-  font-weight: bold !important;
-  color: #333 !important;
-  text-align: center !important;
+  font-size: 32pt !important;
+  margin: 10mm 0 4mm 0 !important;
 }
 
 .pdf-mode h4 {
-  font-size: 16pt !important;
-  margin: 6mm 0 !important;
-  font-weight: 500 !important;
-  color: #666 !important;
-  text-align: center !important;
+  font-size: 20pt !important;
+  margin: 0 0 8mm 0 !important;
 }
 
 .pdf-mode .contact-section {
-  padding: 10mm 0 !important;
-  width: 100% !important;
+  width: 70% !important;
+  display: inline-block !important;
+  flex-direction: column !important;
+  align-items: left !important;
+  justify-content: left !important;
+  text-align: left !important;
+  margin-left: 30px !important;
+  /* padding: 10px !important; */
+  box-sizing: border-box !important;
+
 }
 
 .pdf-mode .contact-item {
-  margin: 5mm 0 !important;
-  gap: 4mm !important;
-  justify-content: center !important;
+  width: 80% !important;
+  gap: 10mm !important;
+  font-size: 24pt !important;
+  margin: 6mm 0 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
 }
 
 .pdf-mode .contact-icon {
-  width: 5mm !important;
-  height: 5mm !important;
+  width: 12mm !important;
+  height: 12mm !important;
 }
 
-.pdf-mode .contact-text,
-.pdf-mode .contact-text a {
-  font-size: 14pt !important;
-  color: #333 !important;
-  font-weight: normal !important;
+.pdf-mode .contact-text, .pdf-mode .contact-text a {
+  font-size: 24pt !important;
+}
+
+.pdf-mode .phone-numbers {
+  gap: 3mm !important;
 }
 
 .pdf-mode .hr {
   margin: 10mm auto !important;
-  height: 1.5mm !important;
-  width: 70% !important;
-}
-
-.pdf-mode .qr-code {
-  margin-top: 20mm !important;
+  height: 2mm !important;
+  width: 90% !important;
 }
 
 .pdf-mode .qr-code img {
-  width: 35mm !important;
-  height: 35mm !important;
+  width: 45mm !important;
+  height: 45mm !important;
   max-width: none !important;
+  margin-top: 12mm !important;
 }
 
 @supports (-webkit-touch-callout: none) {
