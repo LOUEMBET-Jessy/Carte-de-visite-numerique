@@ -312,7 +312,7 @@ h4 {
   .container {
     max-width: 85%;
     margin: 40px auto;
-    transform: translateY(10px);
+    transform: translateY(18px);
     padding: 20px 15px;
     height: 450px;
   }
