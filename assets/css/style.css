@@ -303,10 +303,16 @@ h4 {
     padding: 8px 15px;
     font-size: 12px;
   }
+  h1 {
+    font-size: 24px;
+  }
+  h4 {
+    font-size: 16px;
+  }
   .container {
     max-width: 85%;
     margin: 40px auto;
-    transform: translateY(25px);
+    transform: translateY(10px);
     padding: 20px 15px;
     height: 450px;
   }
