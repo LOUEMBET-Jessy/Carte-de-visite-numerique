@@ -90,7 +90,7 @@ body {
 }
 
 .logo-section img {
-  width: auto;
+  width: 40%;
   height: auto;
 }
 
@@ -421,7 +421,7 @@ h4 {
 }
 
 .pdf-mode .logo-section img {
-  width: auto !important;
+  width: 60% !important;
   height: auto !important;
   display: block !important;
   margin: 0 auto !important;
