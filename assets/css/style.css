@@ -316,6 +316,11 @@ h4 {
     padding: 20px 15px;
     height: 450px;
   }
+  .logo-section img {
+    width: 75%;
+    height: auto;
+  }
+
   .contact-section {
     text-align: center;
     display: inline-block;
