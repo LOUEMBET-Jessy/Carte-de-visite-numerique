@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Carte de Visite - FOUTY Axel Élie</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text" id="loadingText">Veuillez patienter...</p>
+            <div class="loading-dots">
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+            </div>
+        </div>
+    </div>
+    <header class="header">
+        <button class="header-button" onclick="downloadPDF()" id="pdfBtn">
+            <svg class="button-icon" viewBox="0 0 24 24">
+                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+            </svg>
+            Télécharger PDF
+        </button>
+        <button class="header-button" onclick="saveContact()" id="contactBtn">
+            <svg class="button-icon" viewBox="0 0 24 24">
+                <path d="M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7A2,2 0 0,1 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.89 12.76,23 12.5,23H12M13,17V20.08L16.08,17H21V7H7V17H13M9,9H19V11H9V9M9,13H17V15H9V13Z"/>
+            </svg>
+            Enregistrer Contact
+        </button>
+    </header>
+    <div class="container">
+        <div class="card">
+            <div class="logo-section">
+                <img src="../assets/images/logo.png" alt="Logo CNX 4.0">
+                <!-- <img src="https://cnxlink.cnx4-0.com/_next/image?url=%2Fimages%2Fnew_logo-bgHiden.png&w=256&q=75" alt="Logo CNX 4.0"> -->
+            </div>
+            <div class="card-header">
+                <h1>FOUTY Axel Élie</h1>
+                <h4>Associé - Expert RH & Business Developpement Manager</h4>
+                <hr class="hr">
+            </div>
+            <div class="card-body">
+                <div class="contact-section">
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                        </svg>
+                        <div class="contact-text">
+                            <div class="phone-numbers">
+                                <a href="tel:+241077058656">077 05 86 56</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                        </svg>
+                        <div class="contact-text">
+                            <a href="mailto:fouty@cnx4-0.com">fouty@cnx4-0.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M16.36,14C16.44,13.3 16.5,12.66 16.5,12S16.44,10.7 16.36,10H19.74C19.9,10.64 20,11.31 20,12S19.9,13.36 19.74,14M14.59,19.56C15.19,18.45 15.65,17.25 15.97,16H18.92C17.96,17.65 16.43,18.93 14.59,19.56M14.34,14H9.66C9.56,13.34 9.5,12.68 9.5,12S9.56,10.66 9.66,10H14.34C14.43,10.66 14.5,13.34 14.5,12S14.43,13.34 14.34,14M12,19.96C11.17,18.76 10.5,17.43 10.09,16H13.91C13.5,17.43 12.83,18.76 12,19.96M8,8H5.08C6.03,6.34 7.57,5.06 9.4,4.44C8.8,5.55 8.35,6.75 8,8M5.08,16H8C8.35,17.25 8.8,18.45 9.4,19.56C7.57,18.93 6.03,17.65 5.08,16M4.26,14C4.1,13.36 4,12.69 4,12S4.1,10.64 4.26,10H7.64C7.56,10.7 7.5,11.34 7.5,12S7.56,13.3 7.64,14M12,4.03C12.83,5.23 13.5,6.57 13.91,8H10.09C10.5,6.57 11.17,5.23 12,4.03M18.92,8H15.97C15.65,6.75 15.19,5.55 14.59,4.44C16.43,5.07 17.96,6.34 18.92,8M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                        </svg>
+                        <div class="contact-text">
+                            <a href="https://cnx4-0.com" target="_blank">cnx4-0.com</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="qr-code">
+                    <img src="../assets/images/qrcode_cnxlink.cnx4-0.com.png" alt="QR Code pour contact">
+                    <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png" alt="QR Code pour contact">
+                </div> -->
+            </div>
+        </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <p>&copy; CNX 4.0. Tous droits réservés.</p>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        // Données spécifiques à FOUTY Axel Élie
+        const contactData = {
+            name: "FOUTY Axel Élie",
+            title: "Associé - Expert RH & Business Developpement Manager",
+            company: "CNX 4.0",
+            phone1: "077 05 86 56",
+            email: "fouty@cnx4-0.com",
+            website: "https://cnx4-0.com"
+        };
+        </script>
+        <script src="../assets/js/app.js"></script>
+        
+</body>
+</html> 
